@@ -1,11 +1,18 @@
-Getting started
-npm install
-npm run dev
+## System Requirements
 
-Use Prettier w/ default settings
-Linting is not used
+- Node ^v14.17.3 / NPM ^6.14.13
 
-Assumptions:
+## Environment Setup
+
+- Use Prettier w/ default settings
+- Linting is not used
+
+## Development
+
+- npm install
+- npm run dev
+
+## Project Assumptions:
 
 - user input can contain any character
 - commands are case-insensitive
