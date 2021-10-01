@@ -18,3 +18,7 @@
 - commands are case-insensitive
 - ignore any extra inputs after final input needed in a command (i.e. ADD foo bar extra stuff)
 - don't need international languages - hard coding message responses
+
+## Backlog
+
+- implement View output (currenty using console.log)
