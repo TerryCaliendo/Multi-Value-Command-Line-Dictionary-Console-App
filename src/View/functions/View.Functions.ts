@@ -1,6 +1,6 @@
 import * as readline from "readline";
 
-export function getUserInput(): Promise<string> {
+export function getUserInputAsync(): Promise<string> {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,

@@ -1,11 +1,11 @@
 import { parseUserCommand } from "../Controllers/functions/Controller.Functions";
-import { getUserInput } from "./functions/View.Functions";
+import { getUserInputAsync as getUserInputAsync } from "./functions/View.Functions";
 import { executeUserCommand } from "../Controllers/functions/Controller.Functions";
 
 export async function commandUI() {
   let gameOn = true;
   while (gameOn == true) {
-    let userString: string = await getUserInput();
+    let userString: string = await getUserInputAsync();
     let userCommand = parseUserCommand(userString);
     let status = executeUserCommand(userCommand);
 
