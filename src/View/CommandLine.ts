@@ -1,7 +1,6 @@
-import { parseUserCommand } from "../Controllers/parsers";
-import { getUserInput } from "../Controllers/parsers";
-import { executeUserCommand } from "../Controllers/parsers";
-//const readline = require("readline");
+import { parseUserCommand } from "../Controllers/functions/Controller.Functions";
+import { getUserInput } from "./functions/View.Functions";
+import { executeUserCommand } from "../Controllers/functions/Controller.Functions";
 
 export async function commandUI() {
   let gameOn = true;

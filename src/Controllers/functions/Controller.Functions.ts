@@ -1,8 +1,6 @@
-import { commandSet } from "../types/commands";
-import * as readline from "readline";
-import { databaseAdd } from "../Model/database";
-
-import { executionStatus } from "../types/commands";
+import { commandSet } from "../../types/commands";
+import { databaseAdd } from "../../Model/database";
+import { executionStatus } from "../../types/commands";
 
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {
@@ -43,7 +41,6 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
       break;
     case "EXIT":
       return { success: true, continue: false };
-      console.log("Command was to EXIT");
       break;
     default:
       console.log("Command not found");
@@ -59,18 +56,4 @@ export function parseUserCommand(inputLine: string): commandSet {
     input1: commands[1] ? commands[1] : "",
     input2: commands[2] ? commands[2] : "",
   };
-}
-
-export function getUserInput(): Promise<string> {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  return new Promise((resolve, reject) => {
-    rl.question(">", (answer: string) => {
-      rl.close();
-      resolve(answer);
-    });
-  });
 }
