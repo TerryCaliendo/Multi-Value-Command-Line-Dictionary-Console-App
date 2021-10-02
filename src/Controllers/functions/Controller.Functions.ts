@@ -1,6 +1,7 @@
 import { commandSet } from "../../types/commands";
 import { databaseAdd } from "../../Model/Database.Functions";
 import { executionStatus } from "../../types/commands";
+import { databaseKeys } from "../../Model/Database.Functions";
 
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {
@@ -13,6 +14,9 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
           continue: true,
           message: "Not enough input parameters.",
         };
+      break;
+    case "KEYS":
+      return databaseKeys();
       break;
     case "MEMBERS":
       console.log("Command was to MEMBERS");

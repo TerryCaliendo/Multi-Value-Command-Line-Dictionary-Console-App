@@ -2,6 +2,9 @@ import { executionStatus } from "../types/commands";
 
 let database = new Map<string, [string]>();
 
+/////////////////////
+// ADD
+/////////////////////
 // Adds a Member to the collection for a given key
 // Displays an error if the member already exixts for the key
 export function databaseAdd(
@@ -27,4 +30,24 @@ export function databaseAdd(
   else database.set(collectionName, [memberName]);
   // console.log("database:", database.entries());
   return { success: true, continue: true, message: "Added" };
+}
+
+/////////////////////
+// KEYS
+////////////////////
+export function databaseKeys(): executionStatus {
+  return {
+    success: true,
+    continue: true,
+    message: formatDatabaseKeys(database),
+  };
+}
+// format the output of the keys.
+// NOTE: string formatting shouldn't be in the database layer!  Should pass in a formatter!
+function formatDatabaseKeys(collectionMap: Map<string, [string]>): string {
+  return Array.from(collectionMap.keys())
+    .map((key, index) => {
+      return `${index}) ${key}`;
+    })
+    .join("\n");
 }

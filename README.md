@@ -28,3 +28,5 @@
 ## Backlog
 
 - implement View output (currenty using console.log)
+- make type for generic: let database = new Map<string, [string]>();
+- string formatting shouldn't be in the database layer! Should pass in a formatter! --formatDatabaseKeys
