@@ -11,7 +11,6 @@ export async function commandUI() {
     let status = executeUserCommand(userCommand);
 
     // Show the status to the user
-    // TODO: console.log should be abstracted to a UI function
     status.message ? console.log(status.message) : null;
     gameOn = status.continue;
   }
