@@ -1,4 +1,5 @@
-import { executionStatus } from "../types/commands";
+import { exec } from "child_process";
+import { executionCommands, executionStatus } from "../types/commands";
 
 let database = new Map<string, [string]>();
 
@@ -15,7 +16,6 @@ export function databaseAdd(
   // If the member already exists, return an error
   if (
     collection?.find((member) => {
-      console.log("finding member", member, memberName);
       return member === memberName;
     }) != undefined
   )
@@ -23,13 +23,19 @@ export function databaseAdd(
       success: false,
       continue: true,
       message: "ERROR, member already exists for key.",
+      command: executionCommands.add,
     };
   // Collection name is found, Add the new member
   if (collection) collection.push(memberName);
   // Collection name is not found, add the new collection with the new member in a new array
   else database.set(collectionName, [memberName]);
   // console.log("database:", database.entries());
-  return { success: true, continue: true, message: "Added" };
+  return {
+    success: true,
+    continue: true,
+    message: "Added",
+    command: executionCommands.add,
+  };
 }
 
 /////////////////////
@@ -40,6 +46,7 @@ export function databaseKeys(): executionStatus {
     success: true,
     continue: true,
     message: formatDatabaseKeys(database),
+    command: executionCommands.keys,
   };
 }
 // format the output of the keys.

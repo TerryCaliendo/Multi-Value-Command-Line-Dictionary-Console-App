@@ -4,8 +4,24 @@ export interface commandSet {
   input2?: string;
 }
 
-export type executionStatus = {
+export enum executionCommands {
+  add = "ADD",
+  keys = "KEYS",
+  members = "MEMBERS",
+  remove = "REMOVE",
+  removeall = "REMOVEALL",
+  clear = "CLEAR",
+  keyexists = "KEYEXISTS",
+  memberexists = "MEMBEREXISTS",
+  allmembers = "ALLMEMBERS",
+  items = "ITEMS",
+  exit = "EXIT",
+  noop = "NOOP",
+}
+
+export interface executionStatus {
+  command: executionCommands;
   continue: boolean;
   success: boolean;
   message?: string;
-};
+}

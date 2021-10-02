@@ -2,10 +2,11 @@ import { commandSet } from "../../types/commands";
 import { databaseAdd } from "../../Model/Database.Functions";
 import { executionStatus } from "../../types/commands";
 import { databaseKeys } from "../../Model/Database.Functions";
+import { executionCommands } from "../../types/commands";
 
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {
-    case "ADD":
+    case executionCommands.add:
       if (commandSet.input1 && commandSet.input2) {
         return databaseAdd(commandSet.input1, commandSet.input2);
       } else
@@ -13,6 +14,7 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
           success: false,
           continue: true,
           message: "Not enough input parameters.",
+          command: executionCommands.add,
         };
       break;
     case "KEYS":
@@ -43,11 +45,15 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
       console.log("Command was to ITEMS");
       break;
     case "EXIT":
-      return { success: true, continue: false };
+      return {
+        success: true,
+        continue: false,
+        command: executionCommands.exit,
+      };
     default:
       console.log("Command not found");
   }
-  return { success: true, continue: true };
+  return { success: true, continue: true, command: executionCommands.noop };
 }
 
 export function parseUserCommand(inputLine: string): commandSet {
