@@ -7,12 +7,12 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
     case "ADD":
       console.log("Command was to ADD");
       if (commandSet.input1 && commandSet.input2) {
-        databaseAdd(commandSet.input1, commandSet.input2);
+        return databaseAdd(commandSet.input1, commandSet.input2);
       } else
         return {
           success: false,
           continue: true,
-          message: "Not enough input parameters",
+          message: "Not enough input parameters.",
         };
       break;
     case "MEMBERS":
@@ -41,7 +41,6 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
       break;
     case "EXIT":
       return { success: true, continue: false };
-      break;
     default:
       console.log("Command not found");
   }
