@@ -7,6 +7,6 @@ export function databaseAdd(key: string, value: string): executionStatus {
   let foundKey = database.get(key);
   if (foundKey) foundKey.push(value);
   else database.set(key, [value]);
-  console.log("database:", database.entries());
-  return { success: true, continue: true };
+  // console.log("database:", database.entries());
+  return { success: true, continue: true, message: "Added" };
 }

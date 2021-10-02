@@ -1,5 +1,5 @@
 import { commandSet } from "../../types/commands";
-import { databaseAdd } from "../../Model/database";
+import { databaseAdd } from "../../Model/Database.Functions";
 import { executionStatus } from "../../types/commands";
 
 export function executeUserCommand(commandSet: commandSet): executionStatus {
