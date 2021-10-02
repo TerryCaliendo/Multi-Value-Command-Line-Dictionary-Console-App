@@ -8,9 +8,7 @@ export function databaseAdd(
   collectionName: string,
   memberName: string
 ): executionStatus {
-  console.log("adding to database", collectionName, memberName);
   let collection = database.get(collectionName);
-  console.log("collection", collection);
   // If the member already exists, return an error
   if (
     collection?.find((member) => {

@@ -12,9 +12,14 @@
 - npm install
 - npm run dev
 
+## Testing
+
+- npm run test
+
 ## Project Assumptions:
 
-- user input can contain any character
+- user input for collections and members can contain any character
+- user input for collections and members is not limited in size
 - commands are case-insensitive
 - ignore any extra inputs after final input needed in a command (i.e. ADD foo bar extra stuff)
 - don't need international languages - hard coding message responses

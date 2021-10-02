@@ -5,7 +5,6 @@ import { executionStatus } from "../../types/commands";
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {
     case "ADD":
-      console.log("Command was to ADD");
       if (commandSet.input1 && commandSet.input2) {
         return databaseAdd(commandSet.input1, commandSet.input2);
       } else
