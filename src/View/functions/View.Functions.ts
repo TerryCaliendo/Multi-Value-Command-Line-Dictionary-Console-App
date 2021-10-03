@@ -19,7 +19,7 @@ export function getUserInputAsync(): Promise<string> {
 export function formatArrayForNumberedOutput(keys: Array<string>): string {
   return keys
     .map((key, index) => {
-      return `${index}) ${key}`;
+      return `${index + 1}) ${key}`;
     })
     .join("\n");
 }
