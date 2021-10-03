@@ -31,3 +31,4 @@
 - make type for generic: let database = new Map<string, [string]>();
 - string formatting shouldn't be in the database layer! Should pass in a formatter! - - formatDatabaseKeys
 - condense imports using same file
+- inputs are pretty much hard coded to 2 after command
