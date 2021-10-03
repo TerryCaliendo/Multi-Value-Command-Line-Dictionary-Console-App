@@ -1,6 +1,7 @@
 import { exec } from "child_process";
-import { executionCommands, executionStatus } from "../types/commands.types";
+import { executionCommands, executionStatus } from "../types/controller.types";
 import { databaseMapType } from "../types/database.types";
+import { databaseErrorMessages } from "../types/database.types";
 
 let database: databaseMapType = new Map();
 
@@ -23,7 +24,7 @@ export function databaseAdd(
     return {
       success: false,
       continue: true,
-      message: "ERROR, member already exists for key.",
+      message: databaseErrorMessages.add_MemberExists,
       command: executionCommands.add,
     };
   // Collection name is found, Add the new member

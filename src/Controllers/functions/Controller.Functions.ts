@@ -1,8 +1,9 @@
-import { commandSet } from "../../types/commands.types";
+import { commandSet } from "../../types/controller.types";
 import { databaseAdd } from "../../Model/Database.Functions";
-import { executionStatus } from "../../types/commands.types";
+import { executionStatus } from "../../types/controller.types";
 import { databaseKeys } from "../../Model/Database.Functions";
-import { executionCommands } from "../../types/commands.types";
+import { executionCommands } from "../../types/controller.types";
+import { controllerErrorMessages } from "../../types/controller.types";
 
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {
@@ -13,7 +14,7 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
         return {
           success: false,
           continue: true,
-          message: "Not enough input parameters.",
+          message: controllerErrorMessages.add_MissingParameters,
           command: executionCommands.add,
         };
       break;
@@ -51,7 +52,12 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
         command: executionCommands.exit,
       };
     default:
-      console.log("Command not found");
+      return {
+        success: false,
+        continue: true,
+        command: executionCommands.noop,
+        message: controllerErrorMessages.noop_commandNotFound,
+      };
   }
   return { success: true, continue: true, command: executionCommands.noop };
 }
