@@ -1,5 +1,6 @@
 import { executeUserCommand } from "./Controller.Functions";
 import { executionCommands } from "../../types/controller.types";
+import { controllerErrorMessages } from "../../types/controller.types";
 
 //////////////////////////////
 // Controller Functions
@@ -24,6 +25,7 @@ describe("Controller Functions - executeUserCommand()", () => {
     ).toMatchObject({
       continue: true,
       success: false,
+      message: controllerErrorMessages.add_MissingParameters,
     });
   });
 });
@@ -37,7 +39,7 @@ describe("Controller Functions - executeUserCommand() - KEYS", () => {
     ).toMatchObject({ continue: true, success: true });
   });
 
-  // check invalid input after adding a key
+  // check valid input after adding a key
   it("KEYS", () => {
     executeUserCommand({
       action: executionCommands.add,

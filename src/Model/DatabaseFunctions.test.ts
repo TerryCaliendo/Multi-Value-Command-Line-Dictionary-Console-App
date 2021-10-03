@@ -1,6 +1,6 @@
 import { databaseAdd, databaseKeys } from "./Database.Functions";
 import { executionCommands } from "../types/controller.types";
-
+import { databaseSuccessMessages } from "../types/database.types";
 //////////////////////////////
 // Database Functions
 //////////////////////////////
@@ -16,7 +16,7 @@ describe("Database Functions - databaseAdd()", () => {
       success: true,
       continue: true,
       command: executionCommands.add,
-      message: "Added",
+      message: databaseSuccessMessages.add,
     });
   });
   // check repeated member

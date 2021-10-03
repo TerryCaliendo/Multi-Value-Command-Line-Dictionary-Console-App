@@ -2,6 +2,7 @@ import { exec } from "child_process";
 import { executionCommands, executionStatus } from "../types/controller.types";
 import { databaseMapType } from "../types/database.types";
 import { databaseErrorMessages } from "../types/database.types";
+import { databaseSuccessMessages } from "../types/database.types";
 
 let database: databaseMapType = new Map();
 
@@ -35,7 +36,7 @@ export function databaseAdd(
   return {
     success: true,
     continue: true,
-    message: "Added",
+    message: databaseSuccessMessages.add,
     command: executionCommands.add,
   };
 }
