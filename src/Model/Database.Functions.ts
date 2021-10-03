@@ -1,7 +1,8 @@
 import { exec } from "child_process";
-import { executionCommands, executionStatus } from "../types/commands";
+import { executionCommands, executionStatus } from "../types/commands.types";
+import { databaseMapType } from "../types/database.types";
 
-let database = new Map<string, [string]>();
+let database: databaseMapType = new Map();
 
 /////////////////////
 // ADD
@@ -51,7 +52,7 @@ export function databaseKeys(): executionStatus {
 }
 // format the output of the keys.
 // NOTE: string formatting shouldn't be in the database layer!  Should pass in a formatter!
-function formatDatabaseKeys(collectionMap: Map<string, [string]>): string {
+function formatDatabaseKeys(collectionMap: databaseMapType): string {
   return Array.from(collectionMap.keys())
     .map((key, index) => {
       return `${index}) ${key}`;

@@ -1,8 +1,8 @@
-import { commandSet } from "../../types/commands";
+import { commandSet } from "../../types/commands.types";
 import { databaseAdd } from "../../Model/Database.Functions";
-import { executionStatus } from "../../types/commands";
+import { executionStatus } from "../../types/commands.types";
 import { databaseKeys } from "../../Model/Database.Functions";
-import { executionCommands } from "../../types/commands";
+import { executionCommands } from "../../types/commands.types";
 
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {

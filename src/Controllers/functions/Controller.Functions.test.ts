@@ -1,5 +1,5 @@
 import { executeUserCommand } from "./Controller.Functions";
-import { executionCommands } from "../../types/commands";
+import { executionCommands } from "../../types/commands.types";
 
 //////////////////////////////
 // Controller Functions

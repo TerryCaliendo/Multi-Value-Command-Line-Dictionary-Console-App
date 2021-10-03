@@ -1,5 +1,5 @@
 import { databaseAdd, databaseKeys } from "./Database.Functions";
-import { executionCommands } from "../types/commands";
+import { executionCommands } from "../types/commands.types";
 
 //////////////////////////////
 // Database Functions
