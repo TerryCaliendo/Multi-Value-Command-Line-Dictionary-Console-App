@@ -12,10 +12,12 @@ export async function commandUI() {
     let userCommand = parseUserCommand(userString);
     let status = executeUserCommand(userCommand);
 
-    // if add then format the ouput
+    // if a successful response
+    //  AND  its a keys or members command
     if (
-      status.command == executionCommands.keys ||
-      status.command == executionCommands.members
+      status.success == true &&
+      (status.command == executionCommands.keys ||
+        status.command == executionCommands.members)
     ) {
       // TODO: #KNE839 need to affix this to keys command
       // @ts-ignore
