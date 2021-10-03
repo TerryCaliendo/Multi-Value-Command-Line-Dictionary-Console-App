@@ -28,5 +28,6 @@ export interface executionStatus {
 
 export enum controllerErrorMessages {
   add_MissingParameters = "Not enough input parameters.",
+  members_MissingParameter = "Key name not found.",
   noop_commandNotFound = "Command not found.",
 }

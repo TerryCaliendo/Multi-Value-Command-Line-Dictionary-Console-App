@@ -13,7 +13,10 @@ export async function commandUI() {
     let status = executeUserCommand(userCommand);
 
     // if add then format the ouput
-    if (status.command == executionCommands.keys) {
+    if (
+      status.command == executionCommands.keys ||
+      status.command == executionCommands.members
+    ) {
       // TODO: #KNE839 need to affix this to keys command
       // @ts-ignore
       console.log(formatKeys(status.message));

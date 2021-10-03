@@ -51,3 +51,25 @@ export function databaseKeys(): executionStatus {
     command: executionCommands.keys,
   };
 }
+
+/////////////////////
+// MEMBERS
+////////////////////
+export function databaseMembers(collectionName: string): executionStatus {
+  let collection = database.get(collectionName);
+  if (collection) {
+    return {
+      success: true,
+      continue: true,
+      message: collection,
+      command: executionCommands.members,
+    };
+  } else {
+    return {
+      success: false,
+      continue: true,
+      message: databaseErrorMessages.members_CollectionNotFound,
+      command: executionCommands.members,
+    };
+  }
+}

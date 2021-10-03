@@ -2,15 +2,19 @@ import { commandSet } from "../../types/controller.types";
 import { databaseAdd } from "../../Model/Database.Functions";
 import { executionStatus } from "../../types/controller.types";
 import { databaseKeys } from "../../Model/Database.Functions";
+import { databaseMembers } from "../../Model/Database.Functions";
 import { executionCommands } from "../../types/controller.types";
 import { controllerErrorMessages } from "../../types/controller.types";
 
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {
     case executionCommands.add:
+      // if the collection name and member names are present
       if (commandSet.input1 && commandSet.input2) {
         return databaseAdd(commandSet.input1, commandSet.input2);
-      } else
+      }
+      // collection name and member weren't present
+      else
         return {
           success: false,
           continue: true,
@@ -22,7 +26,16 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
       return databaseKeys();
       break;
     case "MEMBERS":
-      console.log("Command was to MEMBERS");
+      // If the collection name is present
+      if (commandSet.input1) return databaseMembers(commandSet.input1);
+      // If the collection name isn't present
+      else
+        return {
+          success: false,
+          continue: true,
+          message: controllerErrorMessages.members_MissingParameter,
+          command: executionCommands.add,
+        };
       break;
     case "REMOVE":
       console.log("Command was to REMOVE");
