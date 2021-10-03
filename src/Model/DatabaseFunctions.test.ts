@@ -1,6 +1,8 @@
 import { databaseAdd, databaseKeys } from "./Database.Functions";
 import { executionCommands } from "../types/controller.types";
 import { databaseSuccessMessages } from "../types/database.types";
+import { databaseMembers } from "./Database.Functions";
+
 //////////////////////////////
 // Database Functions
 //////////////////////////////
@@ -44,6 +46,25 @@ describe("Database Functions - databaseKeys()", () => {
       continue: true,
       message: ["foo", "fiz", "boo"],
       command: executionCommands.keys,
+    });
+  });
+});
+
+/////////////////
+// MEMBERS
+/////////////////
+// - databaseAdd()
+describe("Database Functions - databaseMembers()", () => {
+  // check for members of a collection
+  it("MEMBERS", () => {
+    databaseAdd("foo", "bar");
+    databaseAdd("foo", "buzz");
+    databaseAdd("foo", "bam");
+    expect(databaseMembers("foo")).toMatchObject({
+      success: true,
+      continue: true,
+      message: ["bar", "buzz", "bam"],
+      command: executionCommands.members,
     });
   });
 });

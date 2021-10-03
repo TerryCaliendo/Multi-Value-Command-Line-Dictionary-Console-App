@@ -7,7 +7,7 @@ import { controllerErrorMessages } from "../../types/controller.types";
 //////////////////////////////
 
 // ADD - executeUserCommand()
-describe("Controller Functions - executeUserCommand()", () => {
+describe("Controller Functions - executeUserCommand() - ADD", () => {
   // check valid input
   it("ADD foo bar", () => {
     expect(
