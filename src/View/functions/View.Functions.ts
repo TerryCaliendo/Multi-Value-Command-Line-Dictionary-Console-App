@@ -16,7 +16,7 @@ export function getUserInputAsync(): Promise<string> {
 
 // format the output of the keys.
 // NOTE: string formatting shouldn't be in the database layer!  Should pass in a formatter!
-export function formatKeys(keys: Array<string>): string {
+export function formatArrayForNumberedOutput(keys: Array<string>): string {
   return keys
     .map((key, index) => {
       return `${index}) ${key}`;

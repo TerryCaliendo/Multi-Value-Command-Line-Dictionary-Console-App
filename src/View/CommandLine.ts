@@ -2,7 +2,7 @@ import { parseUserCommand } from "../Controllers/functions/Controller.Functions"
 import { getUserInputAsync as getUserInputAsync } from "./functions/View.Functions";
 import { executeUserCommand } from "../Controllers/functions/Controller.Functions";
 import { executionCommands } from "../types/controller.types";
-import { formatKeys } from "./functions/View.Functions";
+import { formatArrayForNumberedOutput } from "./functions/View.Functions";
 
 // Creates a command line UI
 export async function commandUI() {
@@ -21,7 +21,7 @@ export async function commandUI() {
     ) {
       // TODO: #KNE839 need to affix this to keys command
       // @ts-ignore
-      console.log(formatKeys(status.message));
+      console.log(formatArrayForNumberedOutput(status.message));
       delete status.message;
     }
 
