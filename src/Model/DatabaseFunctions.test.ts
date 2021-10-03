@@ -42,7 +42,7 @@ describe("Database Functions - databaseKeys()", () => {
     expect(databaseKeys()).toMatchObject({
       success: true,
       continue: true,
-      message: "0) foo\n1) fiz\n2) boo",
+      message: ["foo", "fiz", "boo"],
       command: executionCommands.keys,
     });
   });

@@ -23,7 +23,7 @@ export interface executionStatus {
   command: executionCommands;
   continue: boolean;
   success: boolean;
-  message?: string;
+  message?: string | Array<string>;
 }
 
 export enum controllerErrorMessages {

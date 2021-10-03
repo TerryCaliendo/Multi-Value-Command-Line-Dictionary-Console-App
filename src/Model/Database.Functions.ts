@@ -47,16 +47,7 @@ export function databaseKeys(): executionStatus {
   return {
     success: true,
     continue: true,
-    message: formatDatabaseKeys(database),
+    message: Array.from(database.keys()),
     command: executionCommands.keys,
   };
-}
-// format the output of the keys.
-// NOTE: string formatting shouldn't be in the database layer!  Should pass in a formatter!
-function formatDatabaseKeys(collectionMap: databaseMapType): string {
-  return Array.from(collectionMap.keys())
-    .map((key, index) => {
-      return `${index}) ${key}`;
-    })
-    .join("\n");
 }
