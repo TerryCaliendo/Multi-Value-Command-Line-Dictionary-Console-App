@@ -35,3 +35,4 @@
 - issue with types when formatting keys response - see TODO: #KNE839
 - need to make an executionStatus creator?
 - how to reset testing?
+- add missing "command" properties to testing
