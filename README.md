@@ -18,12 +18,12 @@
 
 ## Project Assumptions:
 
-- user input for collections and members can contain any character
-- user input for collections and members is not limited in size
-- commands are case-insensitive
-- ignore any extra inputs after final input needed in a command (i.e. ADD foo bar extra stuff)
-- don't need international languages - hard coding message responses
-- collections and members are case sensitive
+- User input for collections and member names can contain any character (including special characters !@#$%^ etc)
+- User input for collections and members will be an acceptable typical size (not checking length of names)
+- Collections and members names ARE case sensitive (ADD foo bar is different from ADD FOO BAR)
+- Commands ARE NOT case-sensitive (i.e. Add foo bar works)
+- Ignore any extra inputs after final input needed in a command (i.e. ADD foo bar extra stuff)
+- International language support is not needed - hard coding single language via typescript enum
 
 ## Backlog
 
