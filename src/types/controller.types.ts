@@ -1,9 +1,3 @@
-export interface commandSet {
-  action: string;
-  input1?: string;
-  input2?: string;
-}
-
 export enum executionCommands {
   add = "ADD",
   keys = "KEYS",
@@ -19,11 +13,33 @@ export enum executionCommands {
   noop = "NOOP",
 }
 
-export interface executionStatus {
-  command: executionCommands;
+export interface messageTypeMap {
+  ADD: null;
+  KEYS: string[];
+  MEMBERS: string[];
+  REMOVE: null;
+  REMOVEALL: null;
+  CLEAR: null;
+  KEYEXISTS: null;
+  MEMBEREXISTS: null;
+  ALLMEMBERS: string[];
+  ITEMS: number;
+  EXIT: string;
+  NOOP: null;
+}
+
+export interface executionStatus<T extends executionCommands> {
+  command: T;
   continue: boolean;
   success: boolean;
-  message?: string | Array<string>;
+  payload: messageTypeMap[T];
+  message: string;
+}
+
+export interface commandSet {
+  action: string;
+  input1?: string;
+  input2?: string;
 }
 
 export enum controllerErrorMessages {

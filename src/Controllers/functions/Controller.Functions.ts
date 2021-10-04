@@ -6,7 +6,9 @@ import { databaseMembers } from "../../Model/Database.Functions";
 import { executionCommands } from "../../types/controller.types";
 import { controllerErrorMessages } from "../../types/controller.types";
 
-export function executeUserCommand(commandSet: commandSet): executionStatus {
+export function executeUserCommand(
+  commandSet: commandSet
+): executionStatus<executionCommands> {
   switch (commandSet.action.toUpperCase()) {
     case executionCommands.add:
       // if the collection name and member names are present
@@ -20,6 +22,7 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
           continue: true,
           message: controllerErrorMessages.add_MissingParameters,
           command: executionCommands.add,
+          payload: null,
         };
       break;
     case "KEYS":
@@ -33,8 +36,9 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
         return {
           success: false,
           continue: true,
+          payload: [],
+          command: executionCommands.members,
           message: controllerErrorMessages.members_MissingParameter,
-          command: executionCommands.add,
         };
       break;
     case "REMOVE":
@@ -63,16 +67,18 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
         success: true,
         continue: false,
         command: executionCommands.exit,
+        message: "Goodbye!",
+        payload: null,
       };
     default:
-      return {
-        success: false,
-        continue: true,
-        command: executionCommands.noop,
-        message: controllerErrorMessages.noop_commandNotFound,
-      };
   }
-  return { success: true, continue: true, command: executionCommands.noop };
+  return {
+    success: false,
+    continue: true,
+    command: executionCommands.noop,
+    message: controllerErrorMessages.noop_commandNotFound,
+    payload: null,
+  };
 }
 
 export function parseUserCommand(inputLine: string): commandSet {

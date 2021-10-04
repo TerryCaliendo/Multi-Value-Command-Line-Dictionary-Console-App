@@ -21,12 +21,14 @@ export async function commandUI() {
     ) {
       // TODO: #KNE839 need to affix this to keys command
       // @ts-ignore
-      console.log(formatArrayForNumberedOutput(status.message));
-      delete status.message;
+      console.log(formatArrayForNumberedOutput(status.payload));
+      // delete status.payload;
     }
 
     // Show the status to the user
-    status.message ? console.log(status.message) : null;
+    if (status.message) {
+      console.log(status.message);
+    }
     gameOn = status.continue;
   }
 }

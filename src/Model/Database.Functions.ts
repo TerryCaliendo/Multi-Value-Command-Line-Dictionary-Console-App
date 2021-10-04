@@ -13,7 +13,7 @@ let database: databaseMapType = new Map();
 export function databaseAdd(
   collectionName: string,
   memberName: string
-): executionStatus {
+): executionStatus<executionCommands.add> {
   let collection = database.get(collectionName);
   // If the member already exists, return an error
   if (
@@ -26,6 +26,7 @@ export function databaseAdd(
       continue: true,
       message: databaseErrorMessages.add_MemberExists,
       command: executionCommands.add,
+      payload: null,
     };
   // Collection name is found, Add the new member
   if (collection) collection.push(memberName);
@@ -37,38 +38,44 @@ export function databaseAdd(
     continue: true,
     message: databaseSuccessMessages.add,
     command: executionCommands.add,
+    payload: null,
   };
 }
 
 /////////////////////
 // KEYS
 ////////////////////
-export function databaseKeys(): executionStatus {
+export function databaseKeys(): executionStatus<executionCommands.keys> {
   return {
     success: true,
     continue: true,
-    message: Array.from(database.keys()),
+    payload: Array.from(database.keys()),
     command: executionCommands.keys,
+    message: "",
   };
 }
 
 /////////////////////
 // MEMBERS
 ////////////////////
-export function databaseMembers(collectionName: string): executionStatus {
+export function databaseMembers(
+  collectionName: string
+): executionStatus<executionCommands.members> {
   let collection = database.get(collectionName);
   if (collection) {
     return {
       success: true,
       continue: true,
-      message: collection,
+      payload: collection,
       command: executionCommands.members,
+      message: "Found",
     };
   } else {
     return {
       success: false,
       continue: true,
       message: databaseErrorMessages.members_CollectionNotFound,
+      payload: [],
       command: executionCommands.members,
     };
   }
