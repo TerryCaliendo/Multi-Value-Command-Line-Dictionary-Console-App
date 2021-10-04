@@ -16,6 +16,14 @@
 
 - npm run test
 
+## Project Architecture
+
+- The project implements a basic Model-View-Controller (MVC) framework. MVC is chosen to help improve extension and scalability.
+  - For Instance
+  - The View is currently a console app, but it could be upgraded to a Native App or Web app.
+  - The controller could be wrapped with a web server and turned into an API server.
+  - The model could be replaced with an actual database
+
 ## Project Assumptions:
 
 - User input for collections and member names can contain any character (including special characters !@#$%^ etc)
