@@ -6,6 +6,7 @@ import { databaseMembers } from "../../Model/Database.Functions";
 import { executionCommands } from "../../types/controller.types";
 import { controllerErrorMessages } from "../../types/controller.types";
 
+// Controller functionality
 export function executeUserCommand(commandSet: commandSet): executionStatus {
   switch (commandSet.action.toUpperCase()) {
     case executionCommands.add:
@@ -75,6 +76,7 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
   return { success: true, continue: true, command: executionCommands.noop };
 }
 
+// Parses an input line into a commandSet to be sent to the controller
 export function parseUserCommand(inputLine: string): commandSet {
   let commands = inputLine.split(" ");
   //  console.log("commands", commands);

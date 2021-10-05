@@ -1,9 +1,11 @@
+// Type requred for requesting the controller to perform an action
 export interface commandSet {
   action: string;
   input1?: string;
   input2?: string;
 }
 
+// Available commands for the controller to process
 export enum executionCommands {
   add = "ADD",
   keys = "KEYS",
@@ -19,6 +21,7 @@ export enum executionCommands {
   noop = "NOOP",
 }
 
+// The response of any database or controller action
 export interface executionStatus {
   command: executionCommands;
   continue: boolean;
@@ -26,6 +29,7 @@ export interface executionStatus {
   message?: string | Array<string>;
 }
 
+// List of error messages to be reported by the controller
 export enum controllerErrorMessages {
   add_MissingParameters = "Not enough input parameters.",
   members_MissingParameter = "Key name not found.",
