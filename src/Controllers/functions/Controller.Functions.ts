@@ -23,10 +23,10 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
           command: executionCommands.add,
         };
       break;
-    case "KEYS":
+    case executionCommands.keys:
       return databaseKeys();
       break;
-    case "MEMBERS":
+    case executionCommands.members:
       // If the collection name is present
       if (commandSet.input1) return databaseMembers(commandSet.input1);
       // If the collection name isn't present
@@ -38,28 +38,28 @@ export function executeUserCommand(commandSet: commandSet): executionStatus {
           command: executionCommands.add,
         };
       break;
-    case "REMOVE":
+    case executionCommands.remove:
       console.log("Command was to REMOVE");
       break;
-    case "REMOVEALL":
+    case executionCommands.removeall:
       console.log("Command was to REMOVEALL");
       break;
-    case "CLEAR":
+    case executionCommands.clear:
       console.log("Command was to CLEAR");
       break;
-    case "KEYEXISTS":
+    case executionCommands.keyexists:
       console.log("Command was to KEYEXISTS");
       break;
-    case "MEMBEREXISTS":
+    case executionCommands.memberexists:
       console.log("Command was to MEMBEREXISTS");
       break;
-    case "ALLMEMBERS":
+    case executionCommands.allmembers:
       console.log("Command was to ALLMEMBERS");
       break;
-    case "ITEMS":
+    case executionCommands.items:
       console.log("Command was to ITEMS");
       break;
-    case "EXIT":
+    case executionCommands.exit:
       return {
         success: true,
         continue: false,
