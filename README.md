@@ -36,11 +36,9 @@
 ## Backlog
 
 - implement View output (currenty using console.log)
-- make type for generic: let database = new Map<string, [string]>();
-- string formatting shouldn't be in the database layer! Should pass in a formatter! - - formatDatabaseKeys
 - condense imports using same file
-- inputs are pretty much hard coded to 2 after command
-- issue with types when formatting keys response - see TODO: #KNE839
+- inputs are pretty much hard coded to 2 after command? controller seems expandable though
+- issue with types when formatting keys response - search for "TODO: #KNE839"
 - need to make an executionStatus creator?
-- how to reset testing?
+- need to reset testing
 - add missing "command" properties to testing
